@@ -1,5 +1,5 @@
-const tshepo = "Tshepo";
-const dumi = "Dumisani";
+const tshepo = 'Tshepo';
+const dumi = 'Dumisani';
 
 module.exports = {
   tshepo,
