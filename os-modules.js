@@ -1,7 +1,8 @@
-const os = require("os");
+const os = require('os');
 
 // Method returns user info
 const user = os.userInfo();
+// eslint-disable-next-line no-console
 console.log(user);
 
 // Method returns system uptim in seconds
