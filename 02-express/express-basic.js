@@ -6,7 +6,7 @@
 * app.put => Update Data
 * app.delete => Delete Data
 * app.all => Works with all of them, this might be responce when resorce is not found
-* app.use => This is responsible for middleware
+* app.use => This is responsible for middleware[getting static files]
 * app.listen => listerning to port
 */
 
