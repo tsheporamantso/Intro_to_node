@@ -29,7 +29,7 @@ app.all('*', (req, res) => {
     .status(404, {
       'content-type': 'text/html',
     })
-    .send('<h2>Page not found! 😢</h1>');
+    .send('<h2>Page not found!😢</h1>');
 });
 
 app.listen(8000, 'localhost', (err) => {
