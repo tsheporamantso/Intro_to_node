@@ -5,11 +5,17 @@ const server = http.createServer((req, res) => {
   const { pathname } = url.parse(req.url);
 
   if (pathname === '/' || pathname === '/home') {
-    res.end('Welcome to home page');
-  } else if (pathname === '/about') {
-    res.end('Welcome to the about page!');
-  } else {
     res.writeHead(200, {
+      'Content-type': 'text/html',
+    });
+    res.end('<h1>Welcome to home page</h1>');
+  } else if (pathname === '/about') {
+    res.writeHead(200, {
+      'Content-type': 'text/html',
+    });
+    res.end('<h1>Welcome to the about page!</h1>');
+  } else {
+    res.writeHead(404, {
       'Content-type': 'text/html',
     });
     res.end(`
@@ -24,6 +30,6 @@ server.listen('8080', 'localhost', (err) => {
   if (err) {
     throw err;
   } else {
-    // console.log('Listening to port: 8080');
+    console.log('Listening to port http://localhost:8080');
   }
 });
