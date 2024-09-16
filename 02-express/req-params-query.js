@@ -1,5 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable function-paren-newline */
+const { StatusCodes } = require('http-status-codes');
 const express = require('express');
 const { products } = require('./data');
 
@@ -8,7 +9,7 @@ const app = express();
 ! Root route
 */
 app.get('/', (req, res) => {
-  res.status(200, {
+  res.status(StatusCodes.OK, {
     'content-type': 'text/html',
   }).send(`
     <h1>Welcome to Home Page 🏠</h1>
@@ -23,7 +24,7 @@ app.get('/api/products', (req, res) => {
     const { id, name, image } = product;
     return { id, name, image };
   });
-  res.json(newProducts);
+  res.status(StatusCodes.OK).json(newProducts);
 });
 /*
 ! Single product
@@ -35,9 +36,9 @@ app.get('/api/products/:productID', (req, res) => {
   const { productID } = req.params;
   const singleProduct = products.find((product) => product.id === +productID);
   if (singleProduct) {
-    res.json(singleProduct);
+    res.status(StatusCodes.OK).json(singleProduct);
   } else {
-    res.status(404, {
+    res.status(StatusCodes.NOT_FOUND, {
       'content-type': 'text/html',
     }).send(`
       <h1>Oops!</h1>
@@ -67,9 +68,9 @@ app.get('/api/v1/query', (req, res) => {
   }
   if (sortedProducts.length < 1) {
     // res.status(200).send('No product matched your search');
-    return res.status(200).json({ success: true, data: [] });
+    return res.status(StatusCodes.OK).json({ success: true, data: [] });
   }
-  return res.status(200).json(sortedProducts);
+  return res.status(StatusCodes.OK).json(sortedProducts);
 });
 /*
 ! 404

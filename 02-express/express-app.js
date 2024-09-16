@@ -10,7 +10,7 @@
 * app.listen => listerning to port
 ! keep in mind when you sendFile, it requires an absolute path.
 */
-
+const { StatusCodes } = require('http-status-codes');
 const express = require('express');
 
 const app = express();
@@ -20,13 +20,14 @@ app.use(express.static('./public'));
 /*
 ? HTML is also a static file..
 */
+
 // app.get('/', (req, res) => {
 //   res.sendFile(`${__dirname}/navbar-app/index.html`);
 // });
 
 app.all('*', (req, res) => {
   res
-    .status(404, {
+    .status(StatusCodes.NOT_FOUND, {
       'content-type': 'text/html',
     })
     .send('<h2>Page not found!😢</h1>');
